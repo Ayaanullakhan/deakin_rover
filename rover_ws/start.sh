@@ -101,7 +101,7 @@ else
     error "Are you running inside the Docker container?"
     echo ""
     echo "  To start the container, open this project in VS Code"
-    echo "  and select the 'opiz ros2 jazzy' dev container."
+    echo "  and select the 'rpi ros2 jazzy' dev container."
     exit 1
 fi
 
@@ -235,9 +235,6 @@ echo -e "    2. Open:                 ${CYAN}http://localhost:3000${NC}"
 echo -e "    3. Enter Rover IP:       ${CYAN}${ROVER_IP}${NC}"
 echo -e "    4. Port:                 ${CYAN}9090${NC}"
 echo -e "    5. Video Port:           ${CYAN}8080${NC}"
-echo ""
-echo -e "  ${BOLD}Foxglove Studio (backup GUI):${NC}"
-echo -e "    Connect to:              ${CYAN}ws://${ROVER_IP}:8765${NC}"
 echo ""
 echo -e "  ${BOLD}To stop:${NC} Press ${RED}Ctrl+C${NC}"
 echo ""

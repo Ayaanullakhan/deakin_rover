@@ -1,16 +1,11 @@
 #!/usr/bin/env python3
 """
-Infrastructure launch — rosbridge, Foxglove Bridge, web_video_server, TF.
+Infrastructure launch — rosbridge, web_video_server, TF.
 
 Provides GUI connectivity:
   - rosbridge_server on port 9090 (for custom Next.js GUI via roslib)
-  - foxglove_bridge on port 8765 (backup GUI via Foxglove Studio)
   - web_video_server on port 8080 (MJPEG camera streams for GUI)
   - robot_state_publisher + joint_state_publisher (TF tree)
-
-FOXGLOVE USAGE:
-  Open Foxglove Studio → "Open connection" → ws://<rover_ip>:8765
-  All topics and services are automatically available.
 
 MOCK MODE: Fully functional on Orange Pi.
 HARDWARE UPGRADE: No changes needed.
@@ -30,10 +25,6 @@ def generate_launch_description():
         'rosbridge_port', default_value='9090',
         description='WebSocket port for rosbridge (GUI uses this)')
 
-    foxglove_port = DeclareLaunchArgument(
-        'foxglove_port', default_value='8765',
-        description='WebSocket port for Foxglove Studio (backup GUI)')
-
     video_port = DeclareLaunchArgument(
         'video_port', default_value='8080',
         description='HTTP port for web_video_server (camera MJPEG streams)')
@@ -47,20 +38,6 @@ def generate_launch_description():
             'port': LaunchConfiguration('rosbridge_port'),
             'address': '',
             'retry_startup_delay': 5.0,
-        }],
-        output='screen',
-    )
-
-    # -- foxglove_bridge (backup GUI) --
-    foxglove = Node(
-        package='foxglove_bridge',
-        executable='foxglove_bridge',
-        name='foxglove_bridge',
-        parameters=[{
-            'port': LaunchConfiguration('foxglove_port'),
-            'address': '0.0.0.0',
-            'send_buffer_limit': 10000000,
-            'num_threads': 0,
         }],
         output='screen',
     )
@@ -94,10 +71,8 @@ def generate_launch_description():
 
     return LaunchDescription([
         rosbridge_port,
-        foxglove_port,
         video_port,
         rosbridge,
-        foxglove,
         web_video,
         description_launch,
     ])

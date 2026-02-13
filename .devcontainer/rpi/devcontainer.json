@@ -1,5 +1,5 @@
 {
-  "name": "opiz ros2 jazzy (arm)",
+  "name": "rpi ros2 jazzy",
   "dockerFile": "Dockerfile",
   "runArgs": [
     "--privileged",
@@ -9,5 +9,6 @@
   "workspaceFolder": "/${localWorkspaceFolderBasename}/rover_ws",
   "mounts": [
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.bash_history,target=/home/vscode/.bash_history,type=bind"
-  ]
+  ],
+  "postStartCommand": "nohup bash ./start.sh > /tmp/rover.log 2>&1 &"
 }
