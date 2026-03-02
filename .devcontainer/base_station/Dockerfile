@@ -56,7 +56,6 @@ RUN sudo apt-get update && sudo apt-get install -y \
     ros-jazzy-joint-state-publisher-gui \
     ros-jazzy-xacro \
     ros-jazzy-joy \
-    # ros-jazzy-kdl-parser-py \
     && sudo rm -rf /var/lib/apt/lists/*
 
 # Block B — colcon build tools
@@ -80,7 +79,3 @@ RUN sudo apt-get update && sudo apt-get install -y \
     libxcb-xkb1 \
     libxkbcommon-x11-0 \
     && sudo rm -rf /var/lib/apt/lists/*
-
-# Block D — auto-source workspace overlay in .bashrc
-# RUN echo '[ -f /deakin_rover/base_station_ws/arm/DCR-Arm-2026/install/setup.bash ] && \
-#     source /deakin_rover/base_station_ws/arm/DCR-Arm-2026/install/setup.bash' >> ~/.bashrc
