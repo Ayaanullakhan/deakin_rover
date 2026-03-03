@@ -79,3 +79,9 @@ RUN sudo apt-get update && sudo apt-get install -y \
     libxcb-xkb1 \
     libxkbcommon-x11-0 \
     && sudo rm -rf /var/lib/apt/lists/*
+
+# Block D — CAN bus utilities (candump/cansend for protocol debugging, ip link for bus setup)
+RUN sudo apt-get update && sudo apt-get install -y \
+    can-utils \
+    iproute2 \
+    && sudo rm -rf /var/lib/apt/lists/*
