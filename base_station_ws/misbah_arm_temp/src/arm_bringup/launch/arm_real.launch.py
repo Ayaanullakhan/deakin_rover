@@ -37,8 +37,7 @@ def launch_setup(context, *args, **kwargs):
         executable="ros2_control_node",
         parameters=[
             moveit_config.robot_description,
-            moveit_config.robot_description_semantic,
-            moveit_config.robot_description_kinematics,
+            str(moveit_config.package_path / "config/ros2_controllers.yaml"),
         ],
         output="screen",
     )
