@@ -59,7 +59,8 @@ RUN sudo apt-get update && sudo apt-get install -y \
     ros-jazzy-joint-state-publisher \
     ros-jazzy-robot-state-publisher \
     ros-jazzy-xacro \
-    ros-jazzy-rosbridge-server
+    ros-jazzy-rosbridge-server \
+    libmodbus-dev
 
 # System tools for monitoring and development
 RUN sudo apt-get update && sudo apt-get install -y \
@@ -71,11 +72,12 @@ RUN sudo apt-get update && sudo apt-get install -y \
     net-tools \
     iputils-ping \
     psmisc \
-    v4l-utils \
-    && sudo rm -rf /var/lib/apt/lists/*
+    v4l-utils
 
 # Python packages for rover nodes
 RUN pip3 install --no-cache-dir --break-system-packages \
     psutil
 
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
+
+RUN rosdep install -y --from-paths src -i -r --rosdistro jazzy --skip-keys "libopencv-dev libopencv-contrib-dev libopencv-imgproc-dev python-opencv python3-opencv ros-jazzy-ament-cmake-clang-tidy"

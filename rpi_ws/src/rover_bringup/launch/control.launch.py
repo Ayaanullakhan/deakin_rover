@@ -1,24 +1,23 @@
 #!/usr/bin/env python3
 """
-Control launch — e-stop, drive mixer, arm controller, joystick teleop.
+Control launch — e-stop, arm controller, joystick teleop.
 
 E-stop launches first as it's the highest-priority safety node.
 All control nodes check /estop/active before publishing commands.
 
-MOCK MODE: Fully functional on Orange Pi.
+NOTE: drive_node (rover_drive skid-steer mixer) is intentionally NOT launched here.
+Skid-steer mixing is now handled by diff_drive_controller inside ros2_control,
+launched from hardware.launch.py.
+
+MOCK MODE: Fully functional without physical hardware.
 HARDWARE UPGRADE: No changes needed — control nodes are hardware-independent.
 """
 
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.substitutions import PathJoinSubstitution
-from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    drive_config = PathJoinSubstitution([
-        FindPackageShare('rover_bringup'), 'config', 'drive_params.yaml'])
-
     # -- E-Stop (must start first) --
     estop = Node(
         package='rover_estop',
@@ -28,15 +27,6 @@ def generate_launch_description():
             'watchdog_timeout_sec': 5.0,   # Generous timeout for testing
             'require_manual_reset': True,
         }],
-        output='screen',
-    )
-
-    # -- Drive Mixer (cmd_vel → motor speeds) --
-    drive = Node(
-        package='rover_drive',
-        executable='drive_node',
-        name='drive_node',
-        parameters=[drive_config],
         output='screen',
     )
 
@@ -71,7 +61,6 @@ def generate_launch_description():
 
     return LaunchDescription([
         estop,
-        drive,
         arm,
         joy_teleop,
     ])

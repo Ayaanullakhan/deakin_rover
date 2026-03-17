@@ -347,6 +347,64 @@ The watchdog auto-triggers if no `/emergency_stop` message is received. Either:
 
 ---
 
+## Real Hardware Checklist for ros2_control Drive System
+
+After deploying to real hardware, verify and update the following before the drive system will work correctly.
+
+### Mechanical Measurements
+
+Measure before first drive test; update `ros2_controllers.yaml` and the URDF `xacro:property` values accordingly.
+
+| Parameter | Where to change | How to measure |
+|---|---|---|
+| `wheel_separation` | `config/ros2_controllers.yaml` + URDF `xacro:property` | Tape measure: centre of left wheel tread to centre of right wheel tread |
+| `wheel_radius` | `config/ros2_controllers.yaml` + URDF `xacro:property` | Measure loaded radius (with full rover weight on wheels) |
+| `gear_ratio` | `rover_drive_hardware` `<ros2_control>` param (if added) | Check gearbox spec on BLD-3055 motor datasheet |
+| Chassis length / width / height | URDF `xacro:property` | Measure actual frame |
+
+### Motor Wiring Verification
+
+| Check | How |
+|---|---|
+| Confirm Modbus slave IDs (1–6) | Provision each motor individually; positive RPM command should spin forward |
+| Confirm which side is reversed | Command one motor at a time; positive rad/s should move rover forward |
+| RS485 port name | `ls /dev/ttyUSB* /dev/ttyACM*` after plugging in the USB-RS485 adapter |
+| Baud rate | Default 9600; can increase to 115200 for faster feedback — must match both ends |
+
+### ros2_control URDF Parameter Block
+
+In `rover_description/urdf/rover.urdf.xacro`, update the `<ros2_control>` hardware params:
+
+```xml
+<param name="serial_port">/dev/ttyUSB0</param>   <!-- verify with: dmesg | grep ttyUSB -->
+<param name="baud_rate">9600</param>              <!-- increase after testing -->
+<param name="max_rpm">3000</param>                <!-- BLD-3055 datasheet limit -->
+<param name="use_mock">false</param>              <!-- set false for real hardware -->
+```
+
+Launch with real hardware:
+
+```bash
+ros2 launch rover_bringup rover.launch.py use_mock:=false
+```
+
+### Odometry Tuning (After First Drive Test)
+
+1. Drive 1 m straight → compare with `ros2 topic echo /diff_drive_controller/odom` → adjust `wheel_radius`
+2. Drive a 1 m square → measure heading error → adjust `wheel_separation`
+3. Iterate until odometry matches physical distance within ~2%
+
+### Verify Controllers Loaded
+
+```bash
+ros2 control list_controllers
+# Expected:
+#   joint_state_broadcaster[joint_state_broadcaster/JointStateBroadcaster] active
+#   diff_drive_controller[diff_drive_controller/DiffDriveController] active
+```
+
+---
+
 ## Port Reference
 
 | Port | Service | Protocol | Used By |
