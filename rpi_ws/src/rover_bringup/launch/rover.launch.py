@@ -84,6 +84,9 @@ def generate_launch_description():
         PythonLaunchDescriptionSource([
             PathJoinSubstitution([pkg, 'launch', 'control.launch.py'])
         ]),
+        launch_arguments={
+            'use_mock': LaunchConfiguration('use_mock'),
+        }.items(),
     )
 
     # Layer 4: Monitoring

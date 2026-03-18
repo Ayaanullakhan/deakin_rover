@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """
-Monitoring launch — system monitor + node manager.
+Monitoring launch — system monitor.
 
 System monitor publishes telemetry to the GUI Status Dashboard.
-Node manager provides services for the GUI to launch/stop nodes remotely.
 
 MOCK MODE: Battery is simulated. Network and nodes are real.
 HARDWARE UPGRADE: Set use_mock=false for real battery sensor.
@@ -36,16 +35,7 @@ def generate_launch_description():
         output='screen',
     )
 
-    # -- Node Manager --
-    node_manager = Node(
-        package='rover_node_manager',
-        executable='node_manager_node',
-        name='node_manager_node',
-        output='screen',
-    )
-
     return LaunchDescription([
         use_mock,
         monitor,
-        node_manager,
     ])

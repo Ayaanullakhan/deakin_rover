@@ -16,7 +16,7 @@
     "LIBGL_ALWAYS_SOFTWARE": "1"
   },
   "workspaceMount": "source=${localWorkspaceFolder},target=/${localWorkspaceFolderBasename},type=bind",
-  "workspaceFolder": "/${localWorkspaceFolderBasename}/base_station_ws",
+  "workspaceFolder": "/${localWorkspaceFolderBasename}",
   // "mounts" causes problems on Windows hosts
   // "mounts": [
   //   "source=${localEnv:HOME}${localEnv:USERPROFILE}/.bash_history,target=/home/vscode/.bash_history,type=bind"

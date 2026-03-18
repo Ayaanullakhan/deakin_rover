@@ -19,10 +19,12 @@
 namespace rover_drive_hardware
 {
 
-// Modbus register map (BLD-3055)
-static constexpr uint16_t REG_CONTROL  = 0x2000;  // Control word (bit0=run, bit1=dir)
-static constexpr uint16_t REG_SPEED    = 0x2001;  // Target speed  (0–3000 RPM, write)
-static constexpr uint16_t REG_FEEDBACK = 0x2002;  // Actual speed  (0–3000 RPM, read)
+// Modbus register map (BLD-305S) — addresses from manual section 8
+// Write registers (function code 0x06):
+static constexpr uint16_t REG_SPEED    = 0x0056;  // Target speed (0–4000 raw, write)
+static constexpr uint16_t REG_CONTROL  = 0x0066;  // Command: 0=stop,1=fwd,2=rev,3=brake (write)
+// Read registers (function code 0x03):
+static constexpr uint16_t REG_FEEDBACK = 0x005F;  // Actual motor speed in RPM (read)
 
 // Motor Modbus IDs: 1–3 left side, 4–6 right side
 static constexpr int NUM_MOTORS = 6;

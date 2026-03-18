@@ -1,8 +1,10 @@
 'use client';
 
 import React from 'react';
-import { AppBar, Toolbar, Typography, Box, Chip } from '@mui/material';
+import { AppBar, Toolbar, Typography, Box, Chip, Button } from '@mui/material';
 import { Circle as CircleIcon } from '@mui/icons-material';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useROSConnection } from '@/hooks/useROSConnection';
 
 /**
@@ -10,6 +12,7 @@ import { useROSConnection } from '@/hooks/useROSConnection';
  */
 const Header = () => {
   const { isConnected, isConnecting, roverIP } = useROSConnection();
+  const pathname = usePathname();
 
   const getConnectionStatus = () => {
     if (isConnecting) {
@@ -59,6 +62,26 @@ const Header = () => {
         </Typography>
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Box sx={{ display: 'flex', gap: 0.5 }}>
+            <Button
+              component={Link}
+              href="/"
+              size="small"
+              variant={pathname === '/' ? 'contained' : 'outlined'}
+              sx={{ minWidth: 64, fontWeight: 600, fontSize: '0.75rem' }}
+            >
+              Drive
+            </Button>
+            <Button
+              component={Link}
+              href="/arm"
+              size="small"
+              variant={pathname === '/arm' ? 'contained' : 'outlined'}
+              sx={{ minWidth: 64, fontWeight: 600, fontSize: '0.75rem' }}
+            >
+              Arm
+            </Button>
+          </Box>
           <Chip
             icon={
               <CircleIcon

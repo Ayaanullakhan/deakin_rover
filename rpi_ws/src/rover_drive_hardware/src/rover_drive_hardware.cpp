@@ -220,7 +220,11 @@ hardware_interface::return_type RoverDriveHardware::write(
 }
 
 // ──────────────────────────────────────────────────────────
-// write_motor — send control word + speed to one BLD-3055
+// write_motor — send speed + command to one BLD-305S
+// Protocol (manual §8):
+//   REG_SPEED   (0x0056): target speed raw value 0–4000
+//   REG_CONTROL (0x0066): 0=stop, 1=forward, 2=reverse, 3=brake
+//   These are non-adjacent registers — two separate writes required.
 // ──────────────────────────────────────────────────────────
 bool RoverDriveHardware::write_motor(int motor_index, double cmd_rpm)
 {
@@ -232,16 +236,26 @@ bool RoverDriveHardware::write_motor(int motor_index, double cmd_rpm)
 
   // Direction logic: right-side motors (IDs 4-6, index 3-5) are physically reversed
   bool reversed = MOTOR_REVERSED[motor_index];
-  bool forward = (cmd_rpm >= 0.0) ^ reversed;
+  bool want_forward = (cmd_rpm >= 0.0) ^ reversed;
+  double abs_rpm = std::abs(cmd_rpm);
 
-  // bit0 = run (1 = run, 0 = stop)
-  // bit1 = direction (0 = forward, 1 = reverse)
-  uint16_t ctrl_word = 0x0001 | (forward ? 0x0000 : 0x0002);
-  uint16_t speed_reg = static_cast<uint16_t>(std::abs(cmd_rpm));
+  // Register 0x0056 accepts 0–4000 (manual §8 register table)
+  uint16_t speed_val = static_cast<uint16_t>(std::min(abs_rpm, 4000.0));
 
-  uint16_t regs[2] = {ctrl_word, speed_reg};
-  int rc = modbus_write_registers(modbus_ctx_, REG_CONTROL, 2, regs);
-  return (rc == 2);
+  // Write speed first
+  if (modbus_write_register(modbus_ctx_, REG_SPEED, speed_val) != 1) {
+    return false;
+  }
+
+  // Write command: 0=stop, 1=forward, 2=reverse (manual §8.1)
+  uint16_t ctrl_val;
+  if (abs_rpm < 1.0) {
+    ctrl_val = 0x0000;  // stop
+  } else {
+    ctrl_val = want_forward ? 0x0001 : 0x0002;
+  }
+
+  return (modbus_write_register(modbus_ctx_, REG_CONTROL, ctrl_val) == 1);
 #else
   (void)motor_index; (void)cmd_rpm;
   return true;
@@ -249,7 +263,8 @@ bool RoverDriveHardware::write_motor(int motor_index, double cmd_rpm)
 }
 
 // ──────────────────────────────────────────────────────────
-// read_motor — read actual RPM from one BLD-3055
+// read_motor — read actual RPM from one BLD-305S
+// Register 0x005F returns actual speed in RPM (manual §8.2.1)
 // ──────────────────────────────────────────────────────────
 bool RoverDriveHardware::read_motor(int motor_index, double & out_rpm)
 {
@@ -263,8 +278,8 @@ bool RoverDriveHardware::read_motor(int motor_index, double & out_rpm)
   int rc = modbus_read_registers(modbus_ctx_, REG_FEEDBACK, 1, &feedback);
   if (rc != 1) { return false; }
 
-  // Convert raw feedback: right-side motors report positive RPM even when driving "backward"
-  // Negate for reversed motors so velocity is in rover-forward convention
+  // 0x005F returns unsigned RPM magnitude — negate for reversed motors
+  // so velocity is in rover-forward convention
   double rpm = static_cast<double>(feedback);
   if (MOTOR_REVERSED[motor_index]) { rpm = -rpm; }
   out_rpm = rpm;
@@ -291,9 +306,8 @@ void RoverDriveHardware::stop_all_motors()
   if (modbus_ctx_ == nullptr) { return; }
   for (int i = 0; i < NUM_MOTORS; ++i) {
     modbus_set_slave(modbus_ctx_, MOTOR_IDS[i]);
-    // Control word: bit0=0 (stop), bit1=0 (forward)
-    uint16_t regs[2] = {0x0000, 0x0000};
-    modbus_write_registers(modbus_ctx_, REG_CONTROL, 2, regs);
+    // Write 0 to REG_CONTROL (0x0066) = stop command (manual §8.1)
+    modbus_write_register(modbus_ctx_, REG_CONTROL, 0x0000);
   }
   RCLCPP_INFO(rclcpp::get_logger("RoverDriveHardware"), "All motors stopped");
 #endif

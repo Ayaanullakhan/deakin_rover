@@ -58,6 +58,7 @@ class JoyTeleopNode(Node):
         self.declare_parameter('mode_button', 0)
         self.declare_parameter('deadzone', 0.1)
         self.declare_parameter('arm_speed_scale', 0.5)
+        self.declare_parameter('drive_only', True)
 
         self.lin_axis = self.get_parameter('linear_axis').value
         self.ang_axis = self.get_parameter('angular_axis').value
@@ -66,6 +67,7 @@ class JoyTeleopNode(Node):
         self.mode_btn = self.get_parameter('mode_button').value
         self.deadzone = self.get_parameter('deadzone').value
         self.arm_scale = self.get_parameter('arm_speed_scale').value
+        self.drive_only = self.get_parameter('drive_only').value
 
         # -- State --
         self.drive_mode = True  # True = drive, False = arm
@@ -99,6 +101,10 @@ class JoyTeleopNode(Node):
     def _on_joy(self, msg: Joy):
         """Handle joystick input."""
         if self.estop_active:
+            return
+
+        if self.drive_only:
+            self._handle_drive(msg)
             return
 
         # Mode toggle (button press with debounce)

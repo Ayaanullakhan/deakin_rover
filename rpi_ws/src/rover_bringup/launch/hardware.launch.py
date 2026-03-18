@@ -97,24 +97,10 @@ def generate_launch_description():
         output='screen',
     )
 
-    # ── CAN Bridge (arm motors — unchanged) ───────────────────────────────────
-    can_bridge = Node(
-        package='rover_can',
-        executable='can_bridge_node',
-        name='can_bridge_node',
-        parameters=[{
-            'use_mock': use_mock_cfg,
-            'can_interface': 'can0',
-            'feedback_rate_hz': 100.0,
-            'status_rate_hz': 2.0,
-        }],
-        output='screen',
-    )
-
-    # NOTE: rs485_bridge_node (rover_serial) is intentionally NOT launched here.
-    # Drive motor control is now handled by ros2_control (controller_manager +
-    # diff_drive_controller + rover_drive_hardware plugin).
-    # rover_serial and rover_drive packages remain in the repo as reference only.
+    # NOTE: rover_can (can_bridge_node) is intentionally NOT launched here.
+    # CAN arm control is now handled by motor_node (DCR-Arm-2026) + socketcan_bridge,
+    # launched from control.launch.py via arm.launch.py.
+    # rover_can package remains in the repo as reference only.
 
     return LaunchDescription([
         use_mock,
@@ -122,5 +108,4 @@ def generate_launch_description():
         delay_joint_state_broadcaster,
         delay_diff_drive,
         camera,
-        can_bridge,
     ])
