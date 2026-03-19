@@ -17,9 +17,9 @@ export const ROSProvider = ({ children }) => {
   });
   const [roverPort, setRoverPort] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('roverPort') || '9090';
+      return localStorage.getItem('roverPort') || '9091';
     }
-    return '9090';
+    return '9091';
   });
   const [videoPort, setVideoPort] = useState(() => {
     if (typeof window !== 'undefined') {

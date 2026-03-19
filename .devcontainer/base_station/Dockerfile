@@ -52,12 +52,15 @@ RUN sudo apt-get update && sudo apt-get install -y \
     ros-jazzy-joint-state-publisher \
     ros-jazzy-joint-state-publisher-gui \
     ros-jazzy-xacro \
+    ros-jazzy-web-video-server \
+    ros-jazzy-rosbridge-server \
     && sudo rm -rf /var/lib/apt/lists/*
 
 # Block B — colcon build tools
 RUN sudo apt-get update && sudo apt-get install -y \
     python3-colcon-common-extensions \
     python3-vcstool \
+    python3-pip \
     && sudo rm -rf /var/lib/apt/lists/*
 
 # Block C — X11/OpenGL for RViz2 / MoveIt GUI on Windows

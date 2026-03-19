@@ -151,12 +151,11 @@ class CameraNode(Node):
     def _create_mock_frame(self, name, stamp):
         """Generate a color-coded test pattern with timestamp overlay."""
         color = self.MOCK_COLORS.get(name, (128, 128, 128))
-        img = np.zeros((self.height, self.width, 3), dtype=np.uint8)
 
-        # Background color with subtle gradient
-        for row in range(self.height):
-            factor = 0.6 + 0.4 * (row / self.height)
-            img[row, :] = [int(c * factor) for c in color]
+        # Vectorized gradient — no Python loop over rows
+        factors = (0.6 + 0.4 * np.linspace(0, 1, self.height)).reshape(-1, 1, 1)
+        img = (np.array(color, dtype=np.float32) * factors).astype(np.uint8)
+        img = np.broadcast_to(img, (self.height, self.width, 3)).copy()
 
         # Animated element — a moving bar
         bar_y = int((math.sin(self.frame_count * 0.05) + 1) / 2 * (self.height - 40))

@@ -10,6 +10,7 @@ export const TOPICS = {
   MOTOR_STAT2: '/motor_stat_2',
   ARM_MODE: '/arm/mode',
   JOY: '/joy',
+  EMERGENCY_STOP: '/emergency_stop',
 };
 
 // ROS Message Types
@@ -25,20 +26,10 @@ export const MSG_TYPES = {
   MOTOR_STAT2: 'arm_interfaces/msg/MotorStat2',
 };
 
-// ROS Service Names
-export const SERVICES = {
-  LAUNCH_NODE: '/node_manager/launch',
-  STOP_NODE: '/node_manager/stop',
-  LIST_NODES: '/node_manager/list',
-};
-
 // ROS Service Types
 export const SRV_TYPES = {
   TRIGGER: 'std_srvs/srv/Trigger',
   SET_BOOL: 'std_srvs/srv/SetBool',
-  // Custom service for node management (JSON request/response)
-  // Uses rover_interfaces/srv/NodeControl: string data → bool success, string message
-  NODE_CONTROL: 'rover_interfaces/srv/NodeControl',
 };
 
 // Camera Configuration
@@ -60,9 +51,7 @@ export const STREAM_DEFAULTS = {
 // Default configurable nodes that can be launched from the GUI
 export const DEFAULT_NODES = [
   { id: 'camera_node', name: 'Camera Node', package: 'rover_camera', executable: 'camera_node' },
-  { id: 'motor_ctrl', name: 'Motor Controller', package: 'rover_drive', executable: 'drive_node' },
   { id: 'can_bridge', name: 'CAN Bridge', package: 'rover_can', executable: 'can_bridge_node' },
-  { id: 'rs485_bridge', name: 'RS485 Bridge', package: 'rover_serial', executable: 'rs485_bridge_node' },
   { id: 'sensor_hub', name: 'Sensor Hub', package: 'rover_monitor', executable: 'system_monitor_node' },
   { id: 'system_monitor', name: 'System Monitor', package: 'rover_monitor', executable: 'system_monitor_node' },
 ];

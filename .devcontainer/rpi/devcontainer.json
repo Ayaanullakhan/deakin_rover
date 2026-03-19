@@ -1,6 +1,7 @@
 {
   "name": "rpi ros2 jazzy",
   "dockerFile": "Dockerfile",
+  "autoForwardPorts": false,
   "runArgs": [
     "--privileged",
     "--network=host"
@@ -10,5 +11,5 @@
   "mounts": [
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.bash_history,target=/home/vscode/.bash_history,type=bind"
   ],
-  "postStartCommand": "nohup bash ./start.sh > /tmp/rover.log 2>&1 &"
+  "postStartCommand": "colcon build --symlink-install > /tmp/build.log 2>&1 || true"
 }

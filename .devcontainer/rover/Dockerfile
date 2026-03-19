@@ -76,8 +76,10 @@ RUN sudo apt-get update && sudo apt-get install -y \
 
 # Python packages for rover nodes
 RUN pip3 install --no-cache-dir --break-system-packages \
-    psutil
+    psutil \
+    ikpy
 
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 
+ENV PIP_BREAK_SYSTEM_PACKAGES=1
 RUN rosdep install -y --from-paths src -i -r --rosdistro jazzy --skip-keys "libopencv-dev libopencv-contrib-dev libopencv-imgproc-dev python-opencv python3-opencv ros-jazzy-ament-cmake-clang-tidy"

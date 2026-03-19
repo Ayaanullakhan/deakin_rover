@@ -242,4 +242,4 @@ echo -e "${GREEN}${BOLD}============================================${NC}"
 echo ""
 
 # Launch everything
-ros2 launch rover_bringup rover.launch.py use_mock:="$USE_MOCK"
+ros2 launch rover_bringup rover.launch.xml use_mock:="$USE_MOCK"
