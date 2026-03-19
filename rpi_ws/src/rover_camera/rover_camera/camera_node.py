@@ -77,8 +77,12 @@ class CameraNode(Node):
         self.width = self.get_parameter('resolution_width').value
         self.height = self.get_parameter('resolution_height').value
 
-        # cv_bridge for real cameras
-        self.bridge = CvBridge() if HAS_CV_BRIDGE else None
+        # cv_bridge for real cameras (instantiation may fail even if import succeeded,
+        # e.g. when cv_bridge is present but cv2 is not installed)
+        try:
+            self.bridge = CvBridge() if HAS_CV_BRIDGE else None
+        except Exception:
+            self.bridge = None
 
         # Publishers and camera handles
         self.img_pubs = []
