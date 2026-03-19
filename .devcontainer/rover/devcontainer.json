@@ -2,7 +2,7 @@
   "name": "jazzy jetson",
   "build": {
     "dockerfile": "Dockerfile",
-    "context": "../.."
+    // "context": "../.."
   },
   "runArgs": [
     "--privileged",
