@@ -62,7 +62,7 @@ flowchart LR
 *Robotic Arm:*
 ```mermaid
 flowchart LR
-    a1["motor_node (IKPy FK/IK)"] --> a2[nobleo_socketcan_bridge] --> a3[CAN bus] --> a4[6-DOF arm motors]
+    a1[USB Joystick] --> a2["/arm/joy topic"] --> a3["motor_node (IKPy FK/IK)"] --> a4[nobleo_socketcan_bridge] --> a5[CAN bus] --> a6[6-DOF arm motors]
 ```
 
 *Camera Streaming:*
