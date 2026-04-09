@@ -35,7 +35,7 @@
 
 ## 🚀 Project Overview
 
-The Deakin Rover is designed and built by the [Deakin Robotics Club](https://www.deakin.edu.au) for the **[Australian Rover Challenge (ARC)](https://www.australianroverchallenge.com.au/)**, Australia's premier university rover competition. Teams design, build, and operate rovers through a series of field tasks including terrain traversal, equipment servicing, autonomous navigation, and science sample retrieval.
+The Deakin Rover is designed and built by the [Deakin Competitive Robotics Club](https://www.dusa.org.au/clubs/deakin-competitive-robotics) for the **[Australian Rover Challenge (ARC)](https://www.australianroverchallenge.com.au/)**, Australia's premier university rover competition. Teams design, build, and operate rovers through a series of field tasks including terrain traversal, equipment servicing, autonomous navigation, and science sample retrieval.
 
 This repository contains the full software stack of Deakin Rover Borealis for the 2026 competition entry: onboard Jetson Nano software, base station ROS2 workspace, and the web-based operator dashboard built with Next.js — all containerised with Docker.
 
@@ -137,7 +137,7 @@ Setup involves several prerequisite steps — installing the PEAK CAN driver, pa
 
 Full step-by-step instructions are in the documentation:
 
-**[📖 Read the full setup guide on ReadTheDocs](https://deakin-rover.readthedocs.io/en/latest/getting-started/)**
+**[📖 Read the full setup guide](https://deakin-rover.readthedocs.io/en/latest/getting-started/)**
 
 <!-- ![Operator GUI screenshot](docs/images/gui_screenshot.png)
 *Operator dashboard: live camera feeds, arm control panel, antenna/LED control, and joystick status.* -->
@@ -169,7 +169,7 @@ Full step-by-step instructions are in the documentation:
 
 ---
 
-## 📚 Resources
+<!-- ## 📚 Resources
 
 | Resource | Link |
 |----------|------|
@@ -177,7 +177,7 @@ Full step-by-step instructions are in the documentation:
 | Demo video | [YouTube — Deakin Rover ARC 2026](https://youtube.com) *(coming soon)* |
 | Competition results | [ARC 2026 Results](https://www.australianroverchallenge.com.au/) *(coming soon)* |
 
----
+--- -->
 
 ## 📄 License
 
