@@ -35,7 +35,7 @@
 
 ## 🚀 Project Overview
 
-The Deakin Rover is designed and built by the [Deakin Competitive Robotics Club](https://www.dusa.org.au/clubs/deakin-competitive-robotics) for the **[Australian Rover Challenge (ARC)](https://www.australianroverchallenge.com.au/)**, Australia's premier university rover competition. Teams design, build, and operate rovers through a series of field tasks including terrain traversal, equipment servicing, autonomous navigation, and science sample retrieval.
+The Deakin Rover is designed and built by the [Deakin Competitive Robotics Club](https://www.instagram.com/deakinrobotics) for the **[Australian Rover Challenge (ARC)](https://www.australianroverchallenge.com.au/)**, Australia's premier university rover competition. Teams design, build, and operate rovers through a series of field tasks including terrain traversal, equipment servicing, autonomous navigation, and science sample retrieval.
 
 This repository contains the full software stack of Deakin Rover Borealis for the 2026 competition entry: onboard Jetson Nano software, base station ROS2 workspace, and the web-based operator dashboard built with Next.js — all containerised with Docker.
 
