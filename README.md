@@ -156,7 +156,7 @@ Full step-by-step instructions are in the documentation:
 | Ayan | []() | Software Team | GUI development |
 | Atharva | []() | Software Team | GUI development |
 | Bon | []() | Payloads Team Lead | Robotic arm forward & inverse kinematics implementation |
-| Nguyen | []() | Cameras & Communication Team Lead | Antenna deployment code and ESP32 firmware for antenna control |
+| Nguyen | [@nguyenisnt](https://github.com/nguyenisnt) | Cameras & Communication Team Lead | Antenna deployment code and ESP32 firmware for antenna control |
 | Tuan | [@Pham-2048](https://github.com/Pham-2048) | Cameras & Communication Co-lead | Antenna deployment code and ESP32 firmware for antenna control |
 | Nathan | []() | Electrical Team Lead | Full electrical architecture (2025 base), drivetrain motor control, Linux kernel patch for multi-camera support, mjpg-streamer integration |
 
