@@ -28,7 +28,6 @@
 - [System Architecture](#-system-architecture)
 - [Features](#-features)
 - [Getting Started](#-getting-started)
-- [Configuration](#-configuration)
 - [Team & Acknowledgements](#-team--acknowledgements)
 - [License](#-license)
 
@@ -140,28 +139,8 @@ Full step-by-step instructions are in the documentation:
 
 **[📖 Read the full setup guide on ReadTheDocs](https://deakin-rover.readthedocs.io/en/latest/getting-started/)**
 
-![Operator GUI screenshot](docs/images/gui_screenshot.png)
-*Operator dashboard: live camera feeds, arm control panel, antenna/LED control, and joystick status.*
-
----
-
-## ⚙ Configuration
-
-| Parameter | Default | Location |
-|-----------|---------|---------|
-| CAN interface | `can1` | `startRover.sh`, `bringup.launch.xml` |
-| CAN bitrate | 1,000,000 bps | `startRover.sh` |
-| RS485 port | `/dev/ttyACM0` | `dcr_motor_controller` |
-| RS485 baud rate | 9600 | `BLD_305s.py` |
-| Max drivetrain speed | 3500 RPM | `dcr_motor_controller` |
-| Camera devices | `/dev/video0`, `/dev/video2`, `/dev/video4` | `startCamera.sh` |
-| Camera resolution | 640 × 480 @ 15 fps | `cameras.yaml` |
-| ESP32 serial port | `/dev/ttyACM1` | `rover_antenna` |
-| ESP32 baud rate | 115,200 | `rover_antenna` |
-| rosbridge port | 9090 | `bringup.launch.xml` |
-| Wheel separation | 0.55 m | `controllers.yaml` |
-| Wheel radius | 0.20 m | `controllers.yaml` |
-| Controller update rate | 5 Hz | `controllers.yaml` |
+<!-- ![Operator GUI screenshot](docs/images/gui_screenshot.png)
+*Operator dashboard: live camera feeds, arm control panel, antenna/LED control, and joystick status.* -->
 
 ---
 
