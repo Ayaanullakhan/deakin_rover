@@ -54,40 +54,33 @@ The rover runs a self-contained ROS2 stack on an NVIDIA Jetson Nano. The operato
 **Rover (NVIDIA Jetson Nano — `dcr_rover/`):**
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph Drivetrain["Drivetrain"]
-        Joy[USB Joystick] --> joy["/joy topic"]
-        joy --> j2m[dcr_joy_to_motor]
-        j2m --> mmc[MotorMovementCommand.srv]
-        mmc --> bld["BLD-305s\nRS485/Modbus RTU"]
-        bld --> drive[6-wheel drivetrain]
+        direction LR
+        d1[USB Joystick] --> d2["/joy topic"] --> d3[dcr_joy_to_motor] --> d4[MotorMovementCommand.srv] --> d5["BLD-305s (RS485/Modbus RTU)"] --> d6[6-wheel drivetrain]
     end
 
     subgraph Arm["Robotic Arm"]
-        mn["motor_node\nIKPy FK/IK"] --> scb[nobleo_socketcan_bridge]
-        scb --> can[CAN bus]
-        can --> arm[6-DOF arm motors]
+        direction LR
+        a1["motor_node (IKPy FK/IK)"] --> a2[nobleo_socketcan_bridge] --> a3[CAN bus] --> a4[6-DOF arm motors]
     end
 
-    subgraph Cameras["Camera Streaming"]
-        cams["3× USB Cameras"] --> mjpg[mjpg_streamer]
-        mjpg --> http["HTTP :8080 / :8090 / :8091"]
+    subgraph Cam["Camera Streaming"]
+        direction LR
+        c1[3x USB Cameras] --> c2[mjpg_streamer] --> c3["HTTP :8080 / :8090 / :8091"]
     end
 
-    subgraph Antenna["Antenna & LEDs"]
-        ra[rover_antenna] --> serial["/dev/ttyACM1"]
-        serial --> esp[ESP32]
-        esp --> out["Antenna deploy\n+ RGB LED array"]
+    subgraph Ant["Antenna and LEDs"]
+        direction LR
+        an1[rover_antenna] --> an2["/dev/ttyACM1"] --> an3[ESP32] --> an4[Antenna deploy + RGB LED array]
     end
 
     subgraph Comms["Operator Comms"]
-        rb["rosbridge_server\n:9090"]
-        fb["foxglove_bridge\n:8765"]
+        direction LR
+        o1["Next.js GUI (operator PC)"] -- WebSocket --> o2["rosbridge_server :9090"]
+        o3[Foxglove Studio] -- WebSocket --> o4["foxglove_bridge :8765"]
+        o1 -- MJPEG --> o5["mjpg streams :8080/:8090/:8091"]
     end
-
-    GUI["Next.js GUI\noperator PC"] -- WebSocket --> rb
-    Fox["Foxglove Studio"] -- WebSocket --> fb
-    GUI -- MJPEG --> http
 ```
 
 **Operator PC (`dcr_base_station/gui/` only):**
