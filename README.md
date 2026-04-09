@@ -53,34 +53,36 @@ The rover runs a self-contained ROS2 stack on an NVIDIA Jetson Nano. The operato
 
 **Rover (NVIDIA Jetson Nano — `dcr_rover/`):**
 
+*Drivetrain:*
 ```mermaid
-flowchart TB
-    subgraph Drivetrain["Drivetrain"]
-        direction LR
-        d1[USB Joystick] --> d2["/joy topic"] --> d3[dcr_joy_to_motor] --> d4[MotorMovementCommand.srv] --> d5["BLD-305s (RS485/Modbus RTU)"] --> d6[6-wheel drivetrain]
-    end
+flowchart LR
+    d1[USB Joystick] --> d2["/joy topic"] --> d3[dcr_joy_to_motor] --> d4[MotorMovementCommand.srv] --> d5["BLD-305s (RS485/Modbus RTU)"] --> d6[6-wheel drivetrain]
+```
 
-    subgraph Arm["Robotic Arm"]
-        direction LR
-        a1["motor_node (IKPy FK/IK)"] --> a2[nobleo_socketcan_bridge] --> a3[CAN bus] --> a4[6-DOF arm motors]
-    end
+*Robotic Arm:*
+```mermaid
+flowchart LR
+    a1["motor_node (IKPy FK/IK)"] --> a2[nobleo_socketcan_bridge] --> a3[CAN bus] --> a4[6-DOF arm motors]
+```
 
-    subgraph Cam["Camera Streaming"]
-        direction LR
-        c1[3x USB Cameras] --> c2[mjpg_streamer] --> c3["HTTP :8080 / :8090 / :8091"]
-    end
+*Camera Streaming:*
+```mermaid
+flowchart LR
+    c1[3x USB Cameras] --> c2[mjpg_streamer] --> c3["HTTP :8080 / :8090 / :8091"]
+```
 
-    subgraph Ant["Antenna and LEDs"]
-        direction LR
-        an1[rover_antenna] --> an2["/dev/ttyACM1"] --> an3[ESP32] --> an4[Antenna deploy + RGB LED array]
-    end
+*Antenna and LEDs:*
+```mermaid
+flowchart LR
+    an1[rover_antenna] --> an2["/dev/ttyACM1"] --> an3[ESP32] --> an4[Antenna deploy + RGB LED array]
+```
 
-    subgraph Comms["Operator Comms"]
-        direction LR
-        o1["Next.js GUI (operator PC)"] -- WebSocket --> o2["rosbridge_server :9090"]
-        o3[Foxglove Studio] -- WebSocket --> o4["foxglove_bridge :8765"]
-        o1 -- MJPEG --> o5["mjpg streams :8080/:8090/:8091"]
-    end
+*Operator Comms:*
+```mermaid
+flowchart LR
+    o1["Next.js GUI (operator PC)"] -- WebSocket --> o2["rosbridge_server :9090"]
+    o3[Foxglove Studio] -- WebSocket --> o4["foxglove_bridge :8765"]
+    o1 -- MJPEG --> o5["mjpg streams :8080 / :8090 / :8091"]
 ```
 
 **Operator PC (`dcr_base_station/gui/` only):**
