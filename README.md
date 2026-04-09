@@ -53,26 +53,50 @@ The rover runs a self-contained ROS2 stack on an NVIDIA Jetson Nano. The operato
 
 **Rover (NVIDIA Jetson Nano — `dcr_rover/`):**
 
-```
-USB Joystick ──► /joy topic ──► dcr_joy_to_motor ──► MotorMovementCommand.srv ──► BLD-305s (RS485/Modbus RTU)
-                                                                                        └── 6-wheel drivetrain
+```mermaid
+flowchart LR
+    subgraph Drivetrain["Drivetrain"]
+        Joy[USB Joystick] --> joy["/joy topic"]
+        joy --> j2m[dcr_joy_to_motor]
+        j2m --> mmc[MotorMovementCommand.srv]
+        mmc --> bld["BLD-305s\nRS485/Modbus RTU"]
+        bld --> drive[6-wheel drivetrain]
+    end
 
-                              motor_node (IKPy FK/IK) ──► nobleo_socketcan_bridge ──► CAN bus ──► 6-DOF arm motors
+    subgraph Arm["Robotic Arm"]
+        mn["motor_node\nIKPy FK/IK"] --> scb[nobleo_socketcan_bridge]
+        scb --> can[CAN bus]
+        can --> arm[6-DOF arm motors]
+    end
 
-3× USB Cameras ──► mjpg_streamer ──► HTTP :8080 / :8090 / :8091
+    subgraph Cameras["Camera Streaming"]
+        cams["3× USB Cameras"] --> mjpg[mjpg_streamer]
+        mjpg --> http["HTTP :8080 / :8090 / :8091"]
+    end
 
-rover_antenna ──► Serial (/dev/ttyACM1) ──► ESP32 ──► antenna deployment + RGB LED array
+    subgraph Antenna["Antenna & LEDs"]
+        ra[rover_antenna] --> serial["/dev/ttyACM1"]
+        serial --> esp[ESP32]
+        esp --> out["Antenna deploy\n+ RGB LED array"]
+    end
 
-rosbridge_server :9090 ◄──── WebSocket ◄──── Next.js GUI (operator PC)
-foxglove_bridge  :8765 ◄──── WebSocket ◄──── Foxglove Studio (Realtime visualisation of Robotic Arm digital twin)
+    subgraph Comms["Operator Comms"]
+        rb["rosbridge_server\n:9090"]
+        fb["foxglove_bridge\n:8765"]
+    end
+
+    GUI["Next.js GUI\noperator PC"] -- WebSocket --> rb
+    Fox["Foxglove Studio"] -- WebSocket --> fb
+    GUI -- MJPEG --> http
 ```
 
 **Operator PC (`dcr_base_station/gui/` only):**
 
-```
-Next.js GUI (localhost:3000)
-  └── roslib.js WebSocket ──► rover IP:9090 (rosbridge_server on Jetson)
-  └── MJPEG HTTP streams   ──► rover IP:8080 / :8090 / :8091 (mjpg_streamer on Jetson)
+```mermaid
+flowchart LR
+    gui["Next.js GUI\nlocalhost:3000"]
+    gui -- "roslib.js WebSocket" --> rb["rover IP:9090\nrosbridge_server"]
+    gui -- "MJPEG HTTP" --> cam["rover IP:8080 / :8090 / :8091\nmjpg_streamer"]
 ```
 
 The Jetson Docker container (`dustynv/ros:jazzy-desktop-r36.4.0-cu128-24.04`, CUDA 12.8-optimised) is the only containerised ROS2 environment used in competition.
