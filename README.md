@@ -81,9 +81,10 @@ flowchart LR
 ```mermaid
 flowchart LR
     o1["Next.js GUI (operator PC)"] -- WebSocket --> o2["rosbridge_server :9090"]
-    o3[Foxglove Studio] -- WebSocket --> o4["foxglove_bridge :8765"]
-    o1 -- MJPEG --> o5["mjpg streams :8080 / :8090 / :8091"]
+    o1 -- MJPEG --> o3["mjpg streams :8080 / :8090 / :8091"]
 ```
+
+> **Development tool — Foxglove Studio + `foxglove_bridge` (:8765):** During development and field testing, Foxglove Studio connected to the rover via `foxglove_bridge` to visualise the robotic arm URDF in real time, giving the team a live digital twin of the arm. This was used to verify joint positions and ensure no arm segment was colliding with the chassis or other parts of the rover during operation. Foxglove is **not** required to run the system in competition.
 
 **Operator PC (`dcr_base_station/gui/` only):**
 
@@ -104,7 +105,7 @@ The Jetson Docker container (`dustynv/ros:jazzy-desktop-r36.4.0-cu128-24.04`, CU
 
 | Feature | Details |
 |---------|---------|
-| **ROS2 Jazzy middleware** | rosbridge WebSocket server (:9090) + Foxglove bridge (:8765) for telemetry |
+| **ROS2 Jazzy middleware** | rosbridge WebSocket server (:9090) for GUI communication |
 | **Full Docker containerisation** | Dev containers for both Jetson and operator PC; reproducible builds with zero host dependency conflicts |
 | **Operator dashboard** | Next.js 16 / React 19 / MUI 7 web GUI — camera feeds, arm control, antenna/LED panel, joystick status |
 | **Joystick teleoperation** | USB gamepad → `/joy` → `dcr_joy_to_motor` at 3 Hz with 500 ms watchdog timeout |
@@ -158,7 +159,6 @@ Full step-by-step instructions are in the documentation:
 | ESP32 serial port | `/dev/ttyACM1` | `rover_antenna` |
 | ESP32 baud rate | 115,200 | `rover_antenna` |
 | rosbridge port | 9090 | `bringup.launch.xml` |
-| Foxglove bridge port | 8765 | `bringup.launch.xml` |
 | Wheel separation | 0.55 m | `controllers.yaml` |
 | Wheel radius | 0.20 m | `controllers.yaml` |
 | Controller update rate | 5 Hz | `controllers.yaml` |
