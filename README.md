@@ -27,6 +27,7 @@
 - [Project Overview](#-project-overview)
 - [System Architecture](#-system-architecture)
 - [Features](#-features)
+- [Awards & Recognition](#-awards--recognition)
 - [Getting Started](#-getting-started)
 - [Team & Acknowledgements](#-team--acknowledgements)
 - [License](#-license)
@@ -128,6 +129,19 @@ The Jetson Docker container (`dustynv/ros:jazzy-desktop-r36.4.0-cu128-24.04`, CU
 
 ---
 
+## 🏆 Awards & Recognition
+
+### Australian Rover Challenge 2026
+
+| Award | Category |
+|-------|----------|
+| **Best Team Culture** | Team Culture |
+
+![Best Team Culture Award](assets/img/best_team_culture_award.jpg)
+*Team Deakin receiving the Best Team Culture Award at the Australian Rover Challenge 2026. (Watch on Livestream: [Link](https://www.youtube.com/live/HbswUp7gHko?si=Jf3o1DR52gmgUhfn&t=31085))*
+
+---
+
 ## 🛠 Getting Started
 
 Setup involves several prerequisite steps — installing the PEAK CAN driver, patching the Linux kernel for multi-camera USB support, connecting and configuring cameras, installing Docker, VS Code, and the Dev Containers extension — before the ROS2 workspace can be built and launched.
@@ -145,19 +159,36 @@ Full step-by-step instructions are in the documentation:
 
 ### Team Deakin — ARC 2026
 
-| Member | GitHub | Title | Contribution |
-|--------|--------|-------|--------------|
-| Misbah Ali | [@mirmisbahali](https://github.com/mirmisbahali/) | Software & Autonomous Systems Lead | ROS2 architecture design, Docker containerisation, teleoperation pipeline, GUI development |
-| Ayan | []() | Software Team | GUI development |
-| Atharva | [@atharvamavle](https://github.com/atharvamavle) | Software Team | GUI development |
-| Bon | [@mson1509](https://github.com/mson1509) | Payloads Team Lead | Robotic arm forward & inverse kinematics implementation |
-| Nguyen | [@nguyenisnt](https://github.com/nguyenisnt) | Cameras & Communication Team Lead | Antenna deployment code and ESP32 firmware for antenna control |
-| Tuan | [@Pham-2048](https://github.com/Pham-2048) | Cameras & Communication Co-lead | Antenna deployment code and ESP32 firmware for antenna control |
-| Nathan | [@BadCodr](https://github.com/BadCodr) | Electrical Team Lead | Full electrical architecture (2025 base), drivetrain motor control, Linux kernel patch for multi-camera support, mjpg-streamer integration |
+| Member | GitHub / LinkedIn | Title | Contribution |
+|--------|-------------------|-------|--------------|
+| Arden Drew Cunneen | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/arden-cunneen-74aa882b2/) | Team Leader & Project Manager | Managed the project end-to-end; sourced funding; enforced systems engineering process; organised all logistics, travel, and accommodation for Adelaide |
+| Misbah Ali | [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white&style=flat-square)](https://github.com/mirmisbahali/) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/mirmisbahali/) | Software & Autonomous Systems Lead | ROS2 architecture design, Docker containerisation, teleoperation pipeline, GUI development |
+| Ayan | [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white&style=flat-square)]() [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/ayaankhan11/) | Software Team | GUI development |
+| Atharva | [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white&style=flat-square)](https://github.com/atharvamavle) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/atharva-mavale-70147a1b4/) | Software Team | GUI development |
+| Bon | [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white&style=flat-square)](https://github.com/mson1509) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/msonnguyen/) | Payloads Team Lead | Led the development of Robotic Arm, Robotic arm forward & inverse kinematics implementation and ROS2 code |
+| Ryan Falconer | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/ryan-falconer/) | Payloads Team Member | Designed, manufactured, and assembled the robotic arm together with Bon |
+| Gregorius Nathaniel Perdana Budihartono | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/gregorius-nathaniel-perdana-budihartono-651629373/) | Payloads Team Member | Designed and programmed the end effector; designed the construction-task scooper; arm electronics; 3D-printed motor housing and mechanical parts |
+| Simeon Chun Kit Choo | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/simeon-choo-763251349/) | Payloads Team Member | Robotic arm design and development; wire management and soldering; chassis panels and Borealis front plate design and manufacturing; designed the rover carry frame |
+| Seth Belleville | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/seth-belleville-b0a89b3ba/) | Payloads Team Member | Designed construction-task pavers; major contributor to Best Team Culture Award |
+| Nguyen | [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white&style=flat-square)](https://github.com/nguyenisnt) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/nguyen-vvo/) | Cameras & Communication Team Lead | Antenna deployment code and ESP32 firmware for antenna control |
+| Tuan | [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white&style=flat-square)](https://github.com/Pham-2048) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/tuan-minh-pham-189053286/) | Cameras & Communication Co-lead | Antenna deployment code and ESP32 firmware for antenna control |
+| Zachary Michael Dwyer | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/zac-dwyer-30416635b/) | Cameras & Communication Team Member | Camera placement and testing; electrical organisation and wire management; parts sourcing; assisted with antenna installation, wireless networking, and IP configuration |
+| Truong Gia Bao Ly | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)]() | Cameras & Communication Team Member | Camera and communication subsystem; LED installation; electrical wire management; provided car and drove the team to/from Adelaide and the competition site |
+| Biniam Seyoum Getachew | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)]() | Cameras & Communication Team Member | Camera and communication subsystem; CAD design for camera mounts; electrical wire management |
+| Nathan | [![@BadCodr](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white&style=flat-square)](https://github.com/BadCodr) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/nathan-belvedere/) | Electrical Team Lead | Full electrical architecture (2025 base), drivetrain motor control, Linux kernel patch for multi-camera support, mjpg-streamer integration |
+| Zack Harvey | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/zackharveyengineer/) | General Support | Spray-painted rover chassis; laser-cutting and manufacturing support; club executive support for funding and club activities |
 
 ### Acknowledgements
 
-- **Nathan's 2025 Electrical Architecture** — the drivetrain motor control system is built on top of the electrical design and codebase Nathan developed for the 2025 competition. His work on RS485 motor interfacing and the Linux kernel patch for multi-camera USB support laid the foundation for this year's software.
+#### 2025 Foundations
+
+- **Lachlan Carboon** <a href="https://www.linkedin.com/in/lachlancarboon/"><img src="https://skillicons.dev/icons?i=linkedin" height="20" alt="LinkedIn"/></a> — co-founded the [Deakin Competitive Robotics Club](https://www.instagram.com/deakinrobotics) and started the rover project at Deakin University. He signed the team up for the Australian Rover Challenge, introduced it to Deakin students, built the first team, and submitted the first competition documents in 2025 — without him, none of this exists.
+- **Matt Davison** <a href="https://www.linkedin.com/in/matt-davison0167/"><img src="https://skillicons.dev/icons?i=linkedin" height="20" alt="LinkedIn"/></a> — designed the original rover from the ground up in 2025, enabling Deakin's first-ever entry at the Australian Rover Challenge. The full mechanical design — chassis, suspension, and wheels — was his work, and the 2026 build is built directly on top of it.
+- **Jatan Vadgama** <a href="https://www.linkedin.com/in/jvadgama/"><img src="https://skillicons.dev/icons?i=linkedin" height="20" alt="LinkedIn"/></a> *(Mechanical Team Lead, ARC 2025)* — took Matt's design, made key modifications, and assembled the complete rover for the 2025 competition. His mechanical engineering and creativity were instrumental in the 2025 build cycle. The 2026 team used the chassis and suspension he assembled and redesigned only the wheels.
+- **Nathan** — the drivetrain motor control system is built on top of the electrical design and codebase Nathan developed for the 2025 competition. His work on RS485 motor interfacing and the Linux kernel patch for multi-camera USB support laid the foundation for this year's software.
+
+#### Open Source
+
 - **[mjpg-streamer](https://github.com/jacksonliam/mjpg-streamer)** — open source MJPEG streaming used for all three camera feeds.
 - **[nobleo/nobleo_socketcan_bridge](https://github.com/nobleo/nobleo_socketcan_bridge)** — C++20 SocketCAN ↔ ROS2 bridge used for CAN bus communication with arm motors.
 
