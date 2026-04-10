@@ -149,7 +149,7 @@ Full step-by-step instructions are in the documentation:
 |--------|--------|-------|--------------|
 | Misbah Ali | [@mirmisbahali](https://github.com/mirmisbahali/) | Software & Autonomous Systems Lead | ROS2 architecture design, Docker containerisation, teleoperation pipeline, GUI development |
 | Ayan | []() | Software Team | GUI development |
-| Atharva | []() | Software Team | GUI development |
+| Atharva | [@atharvamavle](https://github.com/atharvamavle) | Software Team | GUI development |
 | Bon | []() | Payloads Team Lead | Robotic arm forward & inverse kinematics implementation |
 | Nguyen | [@nguyenisnt](https://github.com/nguyenisnt) | Cameras & Communication Team Lead | Antenna deployment code and ESP32 firmware for antenna control |
 | Tuan | [@Pham-2048](https://github.com/Pham-2048) | Cameras & Communication Co-lead | Antenna deployment code and ESP32 firmware for antenna control |
