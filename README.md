@@ -10,7 +10,7 @@
 [![Docker](https://img.shields.io/badge/Docker-containerised-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
-[![Docs](https://img.shields.io/badge/docs-ReadTheDocs-8CA1AF?logo=readthedocs)](https://deakin-rover.readthedocs.io)
+<!-- [![Docs](https://img.shields.io/badge/docs-ReadTheDocs-8CA1AF?logo=readthedocs)](https://deakin-rover.readthedocs.io) -->
 [![Build](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/mirmisbahali/deakin-rover/actions)
 
 </div>
@@ -148,7 +148,7 @@ Setup involves several prerequisite steps — installing the PEAK CAN driver, pa
 
 Full step-by-step instructions are in the documentation:
 
-**[📖 Read the full setup guide](https://deakin-rover.readthedocs.io/en/latest/getting-started/)**
+<!-- **[📖 Read the full setup guide](https://deakin-rover.readthedocs.io/en/latest/getting-started/)** -->
 
 ![Operator GUI screenshot](assets/img/gui.png)
 *Operator dashboard: live camera feeds, arm control panel, antenna control, and joystick status. (Image Source: [ARCh 2026 Day 3 Livestream](https://www.youtube.com/live/MWcUxFiwad8?si=IVAMN0q7_z7-uqs-&t=7971).)*
