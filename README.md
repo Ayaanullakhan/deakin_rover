@@ -150,10 +150,10 @@ Full step-by-step instructions are in the documentation:
 | Misbah Ali | [@mirmisbahali](https://github.com/mirmisbahali/) | Software & Autonomous Systems Lead | ROS2 architecture design, Docker containerisation, teleoperation pipeline, GUI development |
 | Ayan | []() | Software Team | GUI development |
 | Atharva | [@atharvamavle](https://github.com/atharvamavle) | Software Team | GUI development |
-| Bon | []() | Payloads Team Lead | Robotic arm forward & inverse kinematics implementation |
+| Bon | [@mson1509](https://github.com/mson1509) | Payloads Team Lead | Robotic arm forward & inverse kinematics implementation |
 | Nguyen | [@nguyenisnt](https://github.com/nguyenisnt) | Cameras & Communication Team Lead | Antenna deployment code and ESP32 firmware for antenna control |
 | Tuan | [@Pham-2048](https://github.com/Pham-2048) | Cameras & Communication Co-lead | Antenna deployment code and ESP32 firmware for antenna control |
-| Nathan | []() | Electrical Team Lead | Full electrical architecture (2025 base), drivetrain motor control, Linux kernel patch for multi-camera support, mjpg-streamer integration |
+| Nathan | [@BadCodr](https://github.com/BadCodr) | Electrical Team Lead | Full electrical architecture (2025 base), drivetrain motor control, Linux kernel patch for multi-camera support, mjpg-streamer integration |
 
 ### Acknowledgements
 
