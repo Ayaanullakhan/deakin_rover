@@ -1,6 +1,6 @@
 <div align="center">
 
-![Deakin Rover Logo](docs/images/logo.png)
+![Deakin Rover Logo](assets/img/white.png)
 
 # Deakin Rover — Australian Rover Challenge 2026
 
@@ -17,8 +17,8 @@
 
 ---
 
-<!-- ![Rover hero shot](docs/images/rover_hero.jpg)
-*The Deakin Rover ready for field deployment at ARC 2026.* -->
+![Rover hero shot](assets/img/construction_task_livestream.png)
+*Deakin Rover doing the construction task (Image Source: [ARCh 2026 Day 3 Livestream](https://www.youtube.com/live/MWcUxFiwad8?si=puMAp9pC9WCaEeoM&t=7673))*
 
 ---
 
@@ -42,9 +42,6 @@ This repository contains the full software stack of Deakin Rover Borealis for th
 ---
 
 ## 🏗 System Architecture
-
-<!-- ![System architecture diagram](docs/images/architecture.png)
-*High-level architecture: rover onboard stack (left) communicating with the operator base station (right) over Wi-Fi.* -->
 
 The rover runs a self-contained ROS2 stack on an NVIDIA Jetson Nano. The operator connects via a Next.js web GUI over Wi-Fi with no ROS2 installation required on the operator's PC.
 
@@ -123,10 +120,10 @@ The Jetson Docker container (`dustynv/ros:jazzy-desktop-r36.4.0-cu128-24.04`, CU
 | **Multi-camera rig** | 3× USB cameras |
 | **Deployable antenna** | ESP32-controlled deployment mechanism with addressable RGB LED array |
 
-<!-- ![Robotic arm in action](docs/images/arm_in_action.jpg)
-*6-DOF robotic arm performing a manipulation task.*
+![Robotic arm in action](assets/img/robotic_arm_in_action_2.png)
+*6-DOF robotic arm picking rocks during the construction task (Image Source: [ARCh 2026 Day 3 Livestream](https://www.youtube.com/live/MWcUxFiwad8?si=kfXTude7WFz8H4h-&t=7972).)*
 
-![Deployable antenna](docs/images/antenna_deployed.jpg)
+<!-- ![Deployable antenna](docs/images/antenna_deployed.jpg)
 *Deployable antenna extended with ESP32-controlled LED array active.* -->
 
 ---
@@ -139,8 +136,8 @@ Full step-by-step instructions are in the documentation:
 
 **[📖 Read the full setup guide](https://deakin-rover.readthedocs.io/en/latest/getting-started/)**
 
-<!-- ![Operator GUI screenshot](docs/images/gui_screenshot.png)
-*Operator dashboard: live camera feeds, arm control panel, antenna/LED control, and joystick status.* -->
+![Operator GUI screenshot](assets/img/gui.png)
+*Operator dashboard: live camera feeds, arm control panel, antenna control, and joystick status. (Image Source: [ARCh 2026 Day 3 Livestream](https://www.youtube.com/live/MWcUxFiwad8?si=IVAMN0q7_z7-uqs-&t=7971).)*
 
 ---
 
@@ -150,7 +147,7 @@ Full step-by-step instructions are in the documentation:
 
 | Member | GitHub | Title | Contribution |
 |--------|--------|-------|--------------|
-| Misbah Ali | []() | Software & Autonomous Systems Lead | ROS2 architecture design, Docker containerisation, teleoperation pipeline, GUI development |
+| Misbah Ali | [@mirmisbahali](https://github.com/mirmisbahali/) | Software & Autonomous Systems Lead | ROS2 architecture design, Docker containerisation, teleoperation pipeline, GUI development |
 | Ayan | []() | Software Team | GUI development |
 | Atharva | []() | Software Team | GUI development |
 | Bon | []() | Payloads Team Lead | Robotic arm forward & inverse kinematics implementation |
@@ -164,8 +161,10 @@ Full step-by-step instructions are in the documentation:
 - **[mjpg-streamer](https://github.com/jacksonliam/mjpg-streamer)** — open source MJPEG streaming used for all three camera feeds.
 - **[nobleo/nobleo_socketcan_bridge](https://github.com/nobleo/nobleo_socketcan_bridge)** — C++20 SocketCAN ↔ ROS2 bridge used for CAN bus communication with arm motors.
 
-<!-- ![Competition day at ARC 2026](docs/images/arc2026_competition.jpg)
-*Team Deakin at the Australian Rover Challenge 2026.* -->
+![Team Deakin at ARC 2026](assets/img/full_team_photo_on_lander.JPG)
+
+![Team Deakin at ARC 2026](assets/img/full_team_photo.JPG)
+*Team Deakin at the Australian Rover Challenge 2026.*
 
 ---
 
