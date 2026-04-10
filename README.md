@@ -146,9 +146,9 @@ The Jetson Docker container (`dustynv/ros:jazzy-desktop-r36.4.0-cu128-24.04`, CU
 
 Setup involves several prerequisite steps — installing the PEAK CAN driver, patching the Linux kernel for multi-camera USB support, connecting and configuring cameras, installing Docker, VS Code, and the Dev Containers extension — before the ROS2 workspace can be built and launched.
 
-Full step-by-step instructions are in the documentation:
+<!-- Full step-by-step instructions are in the documentation:
 
-<!-- **[📖 Read the full setup guide](https://deakin-rover.readthedocs.io/en/latest/getting-started/)** -->
+**[📖 Read the full setup guide](https://deakin-rover.readthedocs.io/en/latest/getting-started/)** -->
 
 ![Operator GUI screenshot](assets/img/gui.png)
 *Operator dashboard: live camera feeds, arm control panel, antenna control, and joystick status. (Image Source: [ARCh 2026 Day 3 Livestream](https://www.youtube.com/live/MWcUxFiwad8?si=IVAMN0q7_z7-uqs-&t=7971).)*
